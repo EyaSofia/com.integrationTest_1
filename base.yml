@@ -58,4 +58,6 @@ Doctrine\Tests\ORM\Mapping\User:
   schema: schema_name
   table: cms_users
   type: entity
-express.checkout.min.amount: 1
+express.checkout.min.amount: 100
+express.checkout.min.amount_1: 1
+express.checkout.min.amount_2: 5
