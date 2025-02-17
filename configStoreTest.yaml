@@ -2,69 +2,69 @@
 !<tag:yaml.org,2002:null> null:
 - !<tag:yaml.org,2002:null> null
 Doctrine\Tests\ORM\Mapping\User:
-  fields:
-    email:
-      column:
-      length:
-      options:
-        comment:
-        fixed:
-      type:
-      unique:
-    loginCount:
-      column:
-      nullable:
-      options:
-        default:
-        unsigned:
-      type:
-    name:
-      length:
-      type:
-  id:
-    id:
-      generator:
-        strategy:
-      type:
+  type: entity
+  repositoryClass: Doctrine\Tests\ORM\Mapping\UserRepository
+  table: cms_users
+  schema: schema_name
+  readOnly: true
   indexes:
     name_index:
-      columns:
-  lifecycleCallbacks:
-    postPersist:
-    prePersist:
-  manyToMany:
-    groups:
-      joinTable:
-        inverseJoinColumns:
-          group_id:
-            referencedColumnName:
-        joinColumns:
-          user_id:
-            referencedColumnName:
-        name:
-      targetEntity:
-  oneToMany:
-    phonenumbers:
-      cascade:
-      mappedBy:
-      targetEntity:
+      columns: [ name ]
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    name:
+      type: string
+      length: 50
+    email:
+      type: string
+      length: 32
+      column: user_email
+      unique: true
+      options:
+        fixed: true
+        comment: User's email address
+    loginCount:
+      type: integer
+      column: login_count
+      nullable: false
+      options:
+        unsigned: true
+        default: 0
   oneToOne:
     address:
+      targetEntity: Address
       joinColumn:
-        name:
-        onDelete:
-        referencedColumnName:
-      targetEntity:
-  readOnly:
-  repositoryClass:
-  schema:
-  table:
-  type:
+        name: address_id
+        referencedColumnName: id
+        onDelete: CASCADE
+  oneToMany:
+    phonenumbers:
+      targetEntity: Phonenumber
+      mappedBy: user
+      cascade: ["persist", "merge"]
+  manyToMany:
+    groups:
+      targetEntity: Group
+      joinTable:
+        name: cms_users_groups
+        joinColumns:
+          user_id:
+            referencedColumnName: id
+        inverseJoinColumns:
+          group_id:
+            referencedColumnName: id
+  lifecycleCallbacks:
+    prePersist: [ doStuffOnPrePersist, doOtherStuffOnPrePersistToo ]
+    postPersist: [ doStuffOnPostPersist ]
 employees:
-- id: 213
-  name: franc
+- id:
+  name:
   others:
-  - { department: sales, did: 1}
-  - { salary: 5000}
-  - { address: USA, pincode: 97845 }
+  - !<tag:yaml.org,2002:null> null
+  - !<tag:yaml.org,2002:null> null
+  - !<tag:yaml.org,2002:null> null
 express.checkout.min.amount: 25
