@@ -67,4 +67,4 @@ employees:
   - !<tag:yaml.org,2002:null> null
   - !<tag:yaml.org,2002:null> null
   - !<tag:yaml.org,2002:null> null
-express.checkout.min.amount:
+express.checkout.min.amount: 25
