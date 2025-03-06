@@ -117,7 +117,6 @@ Doctrine\Tests\ORM\Mapping\User:
   schema: schema_name
   table: cms_users
   type: entity
-express.checkout.min.amount: 25
 MyCompany\Tests\ORM\Mapping\User:
   fields:
     contactEmail:
@@ -179,3 +178,4 @@ MyCompany\Tests\ORM\Mapping\User:
   schema:
   table:
   type:
+express.checkout.min.amount: 25
