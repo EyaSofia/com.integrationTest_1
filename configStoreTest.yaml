@@ -161,20 +161,20 @@ MyCompany\Tests\ORM\Mapping\User:
         onDelete:
   oneToMany:
     posts:
-      targetEntity:
-      mappedBy:
       cascade:
+      mappedBy:
+      targetEntity:
   manyToMany:
     roles:
-      targetEntity:
       joinTable:
-        name:
-        joinColumns:
-          user_id:
-            referencedColumnName:
         inverseJoinColumns:
           role_id:
             referencedColumnName:
+        joinColumns:
+          user_id:
+            referencedColumnName:
+        name:
+      targetEntity:
   lifecycleCallbacks:
     prePersist:
     postUpdate:
