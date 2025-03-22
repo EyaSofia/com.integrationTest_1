@@ -119,37 +119,37 @@ Doctrine\Tests\ORM\Mapping\User:
   type: entity
 MyCompany\Tests\ORM\Mapping\User:
   fields:
-    userName:
-      type:
-      length:
     contactEmail:
-      type:
-      length:
       column:
-      unique:
-      options:
-        fixed:
-        comment:
-    password:
-      type:
       length:
-    isActive:
+      options:
+        comment:
+        fixed:
       type:
+      unique:
+    isActive:
       column:
       nullable:
       options:
         default:
+      type:
+    password:
+      length:
+      type:
+    userName:
+      length:
+      type:
   id:
     userId:
-      type:
       generator:
         strategy:
+      type:
   indexes:
     user_name_index:
       columns:
   lifecycleCallbacks:
-    prePersist:
     postUpdate:
+    prePersist:
   manyToMany:
     roles:
       targetEntity:
