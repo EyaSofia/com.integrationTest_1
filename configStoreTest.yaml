@@ -120,30 +120,30 @@ Doctrine\Tests\ORM\Mapping\User:
 MyCompany\Tests\ORM\Mapping\User:
   fields:
     contactEmail:
-      column:
-      length:
-      options:
-        comment:
-        fixed:
       type:
+      length:
+      column:
       unique:
+      options:
+        fixed:
+        comment:
     isActive:
+      type:
       column:
       nullable:
       options:
         default:
-      type:
     password:
-      length:
       type:
+      length:
     userName:
-      length:
       type:
+      length:
   id:
     userId:
+      type:
       generator:
         strategy:
-      type:
   indexes:
     user_name_index:
       columns:
@@ -152,27 +152,27 @@ MyCompany\Tests\ORM\Mapping\User:
     prePersist:
   manyToMany:
     roles:
+      targetEntity:
       joinTable:
-        inverseJoinColumns:
-          role_id:
-            referencedColumnName:
+        name:
         joinColumns:
           user_id:
             referencedColumnName:
-        name:
-      targetEntity:
+        inverseJoinColumns:
+          role_id:
+            referencedColumnName:
   oneToMany:
     posts:
-      cascade:
-      mappedBy:
       targetEntity:
+      mappedBy:
+      cascade:
   oneToOne:
     profile:
+      targetEntity:
       joinColumn:
         name:
-        onDelete:
         referencedColumnName:
-      targetEntity:
+        onDelete:
   readOnly:
   repositoryClass:
   schema:
