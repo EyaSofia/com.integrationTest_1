@@ -163,16 +163,16 @@ MyCompany\Tests\ORM\Mapping\User:
       targetEntity:
   oneToMany:
     posts:
-      targetEntity:
-      mappedBy:
       cascade:
+      mappedBy:
+      targetEntity:
   oneToOne:
     profile:
-      targetEntity:
       joinColumn:
         name:
-        referencedColumnName:
         onDelete:
+        referencedColumnName:
+      targetEntity:
   readOnly:
   repositoryClass:
   schema:
