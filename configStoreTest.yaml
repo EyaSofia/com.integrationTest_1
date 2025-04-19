@@ -2,28 +2,28 @@
 Acme\Tests\ORM\Mapping\User:
   fields:
     emailAddress:
-      column:
-      length:
-      options:
-        comment:
-        fixed:
       type:
+      length:
+      column:
       unique:
+      options:
+        fixed:
+        comment:
     loginAttempts:
+      type:
       column:
       nullable:
       options:
-        default:
         unsigned:
-      type:
+        default:
     username:
-      length:
       type:
+      length:
   id:
     userId:
+      type:
       generator:
         strategy:
-      type:
   indexes:
     idx_username:
       columns:
@@ -32,27 +32,27 @@ Acme\Tests\ORM\Mapping\User:
     prePersist:
   manyToMany:
     roles:
+      targetEntity:
       joinTable:
-        inverseJoinColumns:
-          role_id:
-            referencedColumnName:
+        name:
         joinColumns:
           user_id:
             referencedColumnName:
-        name:
-      targetEntity:
+        inverseJoinColumns:
+          role_id:
+            referencedColumnName:
   oneToMany:
     phoneNumbers:
-      cascade:
-      mappedBy:
       targetEntity:
+      mappedBy:
+      cascade:
   oneToOne:
     userProfile:
+      targetEntity:
       joinColumn:
         name:
-        onDelete:
         referencedColumnName:
-      targetEntity:
+        onDelete:
   readOnly:
   repositoryClass:
   schema:
@@ -60,58 +60,58 @@ Acme\Tests\ORM\Mapping\User:
   type:
 Doctrine\Tests\ORM\Mapping\User:
   fields:
-    email:
-      column: user_email
-      length: 32
-      options:
-        comment: User's email address
-        fixed: true
+    name:
       type: string
+      length: 50
+    email:
+      type: string
+      length: 32
+      column: user_email
       unique: true
+      options:
+        fixed: true
+        comment: User's email address
     loginCount:
+      type: integer
       column: login_count
       nullable: false
       options:
-        default: 0
         unsigned: true
-      type: integer
-    name:
-      length: 50
-      type: string
+        default: 0
   id:
     id:
+      type: integer
       generator:
         strategy: AUTO
-      type: integer
   indexes:
     name_index:
       columns: [ name ]
   lifecycleCallbacks:
-    postPersist: [ doStuffOnPostPersist ]
     prePersist: [ doStuffOnPrePersist, doOtherStuffOnPrePersistToo ]
+    postPersist: [ doStuffOnPostPersist ]
   manyToMany:
     groups:
+      targetEntity: Group
       joinTable:
-        inverseJoinColumns:
-          group_id:
-            referencedColumnName: id
+        name: cms_users_groups
         joinColumns:
           user_id:
             referencedColumnName: id
-        name: cms_users_groups
-      targetEntity: Group
+        inverseJoinColumns:
+          group_id:
+            referencedColumnName: id
   oneToMany:
     phonenumbers:
-      cascade: ["persist", "merge"]
-      mappedBy: user
       targetEntity: Phonenumber
+      mappedBy: user
+      cascade: ["persist", "merge"]
   oneToOne:
     address:
+      targetEntity: Address
       joinColumn:
         name: address_id
-        onDelete: CASCADE
         referencedColumnName: id
-      targetEntity: Address
+        onDelete: CASCADE
   readOnly: true
   repositoryClass: Doctrine\Tests\ORM\Mapping\UserRepository
   schema: schema_name
@@ -119,60 +119,60 @@ Doctrine\Tests\ORM\Mapping\User:
   type: entity
 MyCompany\Tests\ORM\Mapping\User:
   fields:
-    contactEmail:
-      column:
-      length:
-      options:
-        comment:
-        fixed:
+    userName:
       type:
+      length:
+    contactEmail:
+      type:
+      length:
+      column:
       unique:
+      options:
+        fixed:
+        comment:
+    password:
+      type:
+      length:
     isActive:
+      type:
       column:
       nullable:
       options:
         default:
-      type:
-    password:
-      length:
-      type:
-    userName:
-      length:
-      type:
   id:
     userId:
+      type:
       generator:
         strategy:
-      type:
   indexes:
     user_name_index:
       columns:
   lifecycleCallbacks:
-    postUpdate:
     prePersist:
+    postUpdate:
   manyToMany:
     roles:
+      targetEntity:
       joinTable:
-        inverseJoinColumns:
-          role_id:
-            referencedColumnName:
+        name:
         joinColumns:
           user_id:
             referencedColumnName:
-        name:
-      targetEntity:
+        inverseJoinColumns:
+          role_id:
+            referencedColumnName:
   oneToMany:
     posts:
-      cascade:
-      mappedBy:
       targetEntity:
+      mappedBy:
+      cascade:
   oneToOne:
     profile:
+      targetEntity:
       joinColumn:
         name:
-        onDelete:
         referencedColumnName:
-      targetEntity:
+        onDelete:
   readOnly:
   repositoryClass:
   schema:
