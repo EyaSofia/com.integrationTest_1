@@ -91,27 +91,27 @@ Doctrine\Tests\ORM\Mapping\User:
     prePersist: [ doStuffOnPrePersist, doOtherStuffOnPrePersistToo ]
   manyToMany:
     groups:
+      targetEntity: Group
       joinTable:
-        inverseJoinColumns:
-          group_id:
-            referencedColumnName: id
+        name: cms_users_groups
         joinColumns:
           user_id:
             referencedColumnName: id
-        name: cms_users_groups
-      targetEntity: Group
+        inverseJoinColumns:
+          group_id:
+            referencedColumnName: id
   oneToMany:
     phonenumbers:
-      cascade: ["persist", "merge"]
-      mappedBy: user
       targetEntity: Phonenumber
+      mappedBy: user
+      cascade: ["persist", "merge"]
   oneToOne:
     address:
+      targetEntity: Address
       joinColumn:
         name: address_id
-        onDelete: CASCADE
         referencedColumnName: id
-      targetEntity: Address
+        onDelete: CASCADE
   readOnly: true
   repositoryClass: Doctrine\Tests\ORM\Mapping\UserRepository
   schema: schema_name
@@ -119,60 +119,60 @@ Doctrine\Tests\ORM\Mapping\User:
   type: entity
 MyCompany\Tests\ORM\Mapping\User:
   fields:
-    contactEmail:
-      column:
-      length:
-      options:
-        comment:
-        fixed:
+    userName:
       type:
+      length:
+    contactEmail:
+      type:
+      length:
+      column:
       unique:
+      options:
+        fixed:
+        comment:
+    password:
+      type:
+      length:
     isActive:
+      type:
       column:
       nullable:
       options:
         default:
-      type:
-    password:
-      length:
-      type:
-    userName:
-      length:
-      type:
   id:
     userId:
+      type:
       generator:
         strategy:
-      type:
   indexes:
     user_name_index:
       columns:
   lifecycleCallbacks:
-    postUpdate:
     prePersist:
+    postUpdate:
   manyToMany:
     roles:
+      targetEntity:
       joinTable:
-        inverseJoinColumns:
-          role_id:
-            referencedColumnName:
+        name:
         joinColumns:
           user_id:
             referencedColumnName:
-        name:
-      targetEntity:
+        inverseJoinColumns:
+          role_id:
+            referencedColumnName:
   oneToMany:
     posts:
-      cascade:
-      mappedBy:
       targetEntity:
+      mappedBy:
+      cascade:
   oneToOne:
     profile:
+      targetEntity:
       joinColumn:
         name:
-        onDelete:
         referencedColumnName:
-      targetEntity:
+        onDelete:
   readOnly:
   repositoryClass:
   schema:
