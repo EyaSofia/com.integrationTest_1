@@ -64,25 +64,25 @@ Doctrine\Tests\ORM\Mapping\User:
       column: user_email
       length: 32
       options:
-        fixed: true
         comment: User's email address
+        fixed: true
       type: string
       unique: true
     loginCount:
       column: login_count
       nullable: false
       options:
-        unsigned: true
         default: 0
+        unsigned: true
       type: integer
     name:
       length: 50
       type: string
   id:
     id:
-      type: integer
       generator:
         strategy: AUTO
+      type: integer
   indexes:
     name_index:
       columns: [ name ]
@@ -91,91 +91,91 @@ Doctrine\Tests\ORM\Mapping\User:
     prePersist: [ doStuffOnPrePersist, doOtherStuffOnPrePersistToo ]
   manyToMany:
     groups:
-      targetEntity: Group
       joinTable:
-        name: cms_users_groups
-        joinColumns:
-          user_id:
-            referencedColumnName: id
         inverseJoinColumns:
           group_id:
             referencedColumnName: id
+        joinColumns:
+          user_id:
+            referencedColumnName: id
+        name: cms_users_groups
+      targetEntity: Group
   oneToMany:
     phonenumbers:
-      targetEntity: Phonenumber
-      mappedBy: user
       cascade: ["persist", "merge"]
+      mappedBy: user
+      targetEntity: Phonenumber
   oneToOne:
     address:
-      targetEntity: Address
       joinColumn:
         name: address_id
-        referencedColumnName: id
         onDelete: CASCADE
+        referencedColumnName: id
+      targetEntity: Address
   readOnly: true
   repositoryClass: Doctrine\Tests\ORM\Mapping\UserRepository
   schema: schema_name
   table: cms_users
   type: entity
+express.checkout.min.amount: 25
 MyCompany\Tests\ORM\Mapping\User:
   fields:
-    userName:
-      type:
-      length:
     contactEmail:
-      type:
-      length:
       column:
-      unique:
-      options:
-        fixed:
-        comment:
-    password:
-      type:
       length:
-    isActive:
+      options:
+        comment:
+        fixed:
       type:
+      unique:
+    isActive:
       column:
       nullable:
       options:
         default:
+      type:
+    password:
+      length:
+      type:
+    userName:
+      length:
+      type:
   id:
     userId:
-      type:
       generator:
         strategy:
+      type:
   indexes:
     user_name_index:
       columns:
   lifecycleCallbacks:
-    prePersist:
     postUpdate:
+    prePersist:
   manyToMany:
     roles:
-      targetEntity:
       joinTable:
-        name:
-        joinColumns:
-          user_id:
-            referencedColumnName:
         inverseJoinColumns:
           role_id:
             referencedColumnName:
+        joinColumns:
+          user_id:
+            referencedColumnName:
+        name:
+      targetEntity:
   oneToMany:
     posts:
-      targetEntity:
-      mappedBy:
       cascade:
+      mappedBy:
+      targetEntity:
   oneToOne:
     profile:
-      targetEntity:
       joinColumn:
         name:
-        referencedColumnName:
         onDelete:
+        referencedColumnName:
+      targetEntity:
   readOnly:
   repositoryClass:
   schema:
   table:
   type:
-express.checkout.min.amount: 25
