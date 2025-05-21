@@ -178,4 +178,4 @@ MyCompany\Tests\ORM\Mapping\User:
   lifecycleCallbacks:
     prePersist:
     postUpdate:
-express.checkout.min.amount: 25
+express.checkout.min.amount:
